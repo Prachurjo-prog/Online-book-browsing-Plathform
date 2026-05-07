@@ -4,6 +4,7 @@ import ReactFastMarquee from "@/Components/Hero/ReactFastMarquee";
 import Footer from "@/Components/Shared/Footer";
 import NavBar from "@/Components/Shared/Navbar";
 import Image from "next/image";
+import AllBooks from "./(main)/all-books/page";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <NavBar/>
       <Hero/>
       <ReactFastMarquee/>
+      <AllBooks/>
       <PopularityPage/>
       <Footer/>
     </div>

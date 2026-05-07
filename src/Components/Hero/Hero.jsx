@@ -4,7 +4,7 @@ import { SiCodemagic } from "react-icons/si";
 
 const Hero = () => {
   return (
-    <div className="container mx-auto flex flex-col md:flex-row px-4 md:mt-45 justify-between items-center gap-10 py-10">
+    <div className="container mx-auto flex flex-col md:flex-row px-4 md:mt-40 mt-20 justify-between items-center gap-10 py-10">
       <div className="flex flex-col items-start gap-5">
         <p className="md:font-medium text-sm text-gray-600 shadow-sm rounded-full  flex items-center gap-2 px-3 py-1">
           <SiCodemagic className="text-orange-300" /> A modern library,
