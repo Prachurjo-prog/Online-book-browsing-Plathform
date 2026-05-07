@@ -4,7 +4,7 @@ import logo from "@/assets/logo-rem.png";
 
 const NavBar = () => {
   return (
-    <div className="navbar  shadow-sm">
+    <div className="navbar shadow-sm">
       <div className=" container mx-auto flex items-center justify-between">
         <div className="navbar-start">
           <div className="dropdown">
@@ -58,7 +58,11 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="btn rounded-2xl bg-black text-white">Login</button>
+          <Link href={"/login"}>
+              <button className="btn rounded-2xl bg-[#10131a] text-white">
+                Login
+              </button>
+            </Link>
         </div>
       </div>
     </div>
