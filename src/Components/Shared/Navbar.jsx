@@ -1,8 +1,16 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo-rem.png";
+import { authClient } from "@/lib/auth-client";
+import { MdOutlineLogout } from "react-icons/md";
 
 const NavBar = () => {
+  const { data: session } = authClient.useSession();
+  const user = session?.user
+  console.log(user)
+
   return (
     <div className="navbar shadow-sm stiky top-0 z-10">
       <div className=" container mx-auto flex items-center justify-between">
@@ -58,11 +66,35 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link href={"/login"}>
+          {/* <Link href={"/login"}>
+            <button className="btn rounded-2xl bg-[#10131a] text-white">
+              Login
+            </button>
+          </Link> */}
+          {user ? (
+            <div className="flex items-center gap-4">
+              <h2 className=" flex gap-1 font-semibold items-center">Hello,<span className="text-sm font-semibold">{user?.name || "Guest"}</span> </h2>
+              <Image
+                src={user?.image || "/default-avatar.png"}
+                alt="User Image"
+                className="rounded-full w-10 h-10"
+                width={30}
+                height={30}
+              />
+              
+                <button onClick={async ()=> await authClient.signOut()} className="btn rounded-2xl hover:bg-[#E0843E]">
+                  <MdOutlineLogout />
+                  Logout
+                </button>
+              
+            </div>
+          ) : (
+            <Link href={"/login"}>
               <button className="btn rounded-2xl bg-[#10131a] text-white">
                 Login
               </button>
             </Link>
+          )}
         </div>
       </div>
     </div>

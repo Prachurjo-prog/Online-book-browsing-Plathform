@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
@@ -8,6 +8,15 @@ import React from "react";
 import { IoLogoGoogle } from "react-icons/io";
 
 const LoginPage = () => {
+
+  const handleGoogleSignin = async() => {
+    
+  const data = await authClient.signIn.social({
+    provider: "google",
+  });
+   console.log(data)
+  }
+
   const onSubmit = async(e)=>{
       e.preventDefault();
 
@@ -59,7 +68,7 @@ const LoginPage = () => {
             </div>
           </div>
 
-          <button className="btn w-full hover:bg-[#E0843E] rounded-xl">
+          <button className="btn w-full hover:bg-[#E0843E] rounded-xl" onClick={handleGoogleSignin}>
             <IoLogoGoogle className="text-xl" />
             Continue with Google
           </button>

@@ -8,6 +8,14 @@ import { useRouter } from "next/navigation";
 import { IoLogoGoogle } from "react-icons/io";
 
 const RegisterPage = () => {
+
+   const handleGoogleSignin = async() => {
+      
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+     console.log(data)
+    }
   const router = useRouter();
 
   const onSubmit = async (e) => {
@@ -88,7 +96,7 @@ const RegisterPage = () => {
             </div>
           </div>
 
-          <button className="btn w-full hover:bg-[#E0843E] rounded-xl">
+          <button className="btn w-full hover:bg-[#E0843E] rounded-xl" onClick={handleGoogleSignin}>
             <IoLogoGoogle className="text-xl" />
             Continue with Google
           </button>
