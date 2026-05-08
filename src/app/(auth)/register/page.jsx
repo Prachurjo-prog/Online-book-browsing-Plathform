@@ -1,41 +1,35 @@
 "use client";
 
-// import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
-// import { useRouter } from "next/navigation";
-// import { useForm } from "react-hook-form";
-
+import { useRouter } from "next/navigation";
 
 import { IoLogoGoogle } from "react-icons/io";
 
 const RegisterPage = () => {
-//   const router = useRouter();
+  const router = useRouter();
 
-//   const {
-//     register,
-//     formState: { errors },
-//     handleSubmit,
-//   } = useForm();
+  const onSubmit = async (e) => {
+    e.preventDefault();
 
-//   const handleRegister = async (data) => {
-//     console.log(data);
-//     const { name, email, password, photoUrl } = data;
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const image = e.target.image.value;
+    const password = e.target.password.value;
 
-//     const {user, error} = await authClient.signUp.email({
-//       name: name, 
-//     email: email,
-//     password: password, 
-//     image: photoUrl,
-    
-//     });
-//     console.log(user, error)
+    const { data, error } = await authClient.signUp.email({
+      name,
+      email,
+      image,
+      password,
+    });
+    console.log({ data, error });
 
-//     if(!error){
-//       router.push("/login")
-//     }
-//   };
-
+    if (!error) {
+      router.push("/login");
+    }
+  };
   return (
     <div className="min-h-[80vh] flex items-center bg-[#F9FAFA] justify-center">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow">
@@ -44,54 +38,42 @@ const RegisterPage = () => {
         </h2>
         <p className="text-gray-500 mb-6">Start borrowing in seconds.</p>
 
-        <form  className="space-y-4">
+        <form className="space-y-4" onSubmit={onSubmit}>
           <div>
             <h3 className="pb-1 font-bold">Name</h3>
             <input
-            //   {...register("name", { required: true })}
               type="text"
               placeholder="Name"
+              name="name"
               className="w-full shadow border border-gray-100 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200"
             />
-            {/* {errors.name && (
-              <p className="text-red-500 text-sm">Name is required</p>
-            )} */}
           </div>
           <div>
             <h3 className="pb-1 font-bold">Email</h3>
             <input
-            //   {...register("email", { required: true })}
               type="email"
               placeholder="Email"
+              name="email"
               className="w-full shadow border border-gray-100 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200"
             />
-            {/* {errors.email && (
-              <p className="text-red-500 text-sm">Email is required</p>
-            )} */}
           </div>
           <div>
             <h3 className="pb-1 font-bold">Photo URL</h3>
             <input
-            //   {...register("photoUrl", { required: true })}
               type="text"
               placeholder="https://..."
+              name="image"
               className="w-full shadow border border-gray-100 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200"
             />
-            {/* {errors.photoUrl && (
-              <p className="text-red-500 text-sm">Photo URL is required</p>
-            )} */}
           </div>
           <div>
             <h3 className="pb-1 font-bold">Password</h3>
             <input
-            //   {...register("password", { required: true })}
               type="password"
               placeholder="password"
+              name="password"
               className="w-full shadow border border-gray-100 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200"
             />
-            {/* {errors.password && (
-              <p className="text-red-500 text-sm">Password is required</p>
-            )} */}
           </div>
           <button className="btn w-full text-white bg-[#10131A] rounded-xl">
             Register

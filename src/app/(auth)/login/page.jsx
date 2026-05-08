@@ -1,34 +1,24 @@
-'use client'
+"use client";
 
-// import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-// import { useForm } from "react-hook-form";
+
 import { IoLogoGoogle } from "react-icons/io";
 
 const LoginPage = () => {
-//   const {
-//       register,
-//       formState: { errors },
-//       handleSubmit,
-//     } = useForm();
-  
-    // const handleLogin = async(data) => {
-    //   console.log(data);
-    //   const { email, password } = data;
-  
-    //   const {user, error} = await authClient.signIn.email({
-        
-    //   email: email,
-    //   password: password, 
-    //   rememberMe: true,
-    //   callbackURL: "/",
-    //   });
-    //   console.log(user, error)
-    // };
+  const onSubmit = async(e)=>{
+      e.preventDefault();
 
-//   console.log(errors)
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+  
+      const {data, error} = await authClient.signIn.email({
+        email, password, callbackURL:"/"
+      })
+      console.log({data, error})
+    }
   return (
     <div className="min-h-[80vh] flex items-center bg-[#F9FAFA] justify-center">
       <div className="w-full max-w-md p-8 bg-white rounded-lg shadow">
@@ -37,26 +27,24 @@ const LoginPage = () => {
           Login to continue your reading journey
         </p>
 
-        <form  className="space-y-4">
+        <form className="space-y-4" onSubmit={onSubmit}>
           <div>
             <h3 className="pb-1 font-bold">Email</h3>
             <input
-            
               type="email"
               placeholder="Email"
+              name="email"
               className="w-full shadow border border-gray-100 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200"
             />
-         
           </div>
           <div>
             <h3 className="pb-1 font-bold">Password</h3>
             <input
-           
               type="password"
               placeholder="password"
+              name="password"
               className="w-full shadow border border-gray-100 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-200"
             />
-            
           </div>
           <button className="btn w-full text-white bg-[#10131A] rounded-xl">
             Login
