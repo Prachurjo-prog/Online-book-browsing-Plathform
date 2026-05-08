@@ -3,7 +3,7 @@ import { PiCalendarSlash } from "react-icons/pi";
 
 const DetailsPage = async ({ params }) => {
   const { id } = await params;
-  const res = await fetch("http://localhost:3000/allbooks.json");
+  const res = await fetch("https://online-book-browsing-plathform.vercel.app/allbooks.json");
   const data = await res.json();
   console.log(data);
 

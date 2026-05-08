@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const AllBooks = async () => {
-  const res = await fetch("http://localhost:3000/allbooks.json");
+  const res = await fetch("https://online-book-browsing-plathform.vercel.app/allbooks.json");
   const data = await res.json();
   console.log(data);
   return (
@@ -23,7 +23,7 @@ const AllBooks = async () => {
               </div>
             
 
-            <Link href={`/all-books/${b.bookId}`}>
+            <Link href={`/books/${b.bookId}`}>
               <button className="btn btn-primary w-full">View Details</button>
             </Link>
           </div>
