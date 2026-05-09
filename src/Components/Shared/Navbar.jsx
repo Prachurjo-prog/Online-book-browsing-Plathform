@@ -10,6 +10,7 @@ const NavBar = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user
   console.log(user)
+  
 
   return (
     <div className="navbar shadow-sm stiky top-0 z-10">
@@ -73,11 +74,11 @@ const NavBar = () => {
           </Link> */}
           {user ? (
             <div className="flex items-center gap-4">
-              <h2 className=" flex gap-1 font-semibold items-center">Hello,<span className="text-sm font-semibold">{user?.name || "Guest"}</span> </h2>
+              <h2 className="hidden md:block flex gap-1 font-semibold items-center">Hello,<span className="text-sm font-semibold">{user?.name || "Guest"}</span> </h2>
               <Image
                 src={user?.image || "/default-avatar.png"}
                 alt="User Image"
-                className="rounded-full w-10 h-10"
+                className="rounded-full w-10 h-10 "
                 width={30}
                 height={30}
               />

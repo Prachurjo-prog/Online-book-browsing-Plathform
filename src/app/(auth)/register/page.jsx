@@ -35,7 +35,7 @@ const RegisterPage = () => {
     console.log({ data, error });
 
     if (!error) {
-      router.push("/login");
+      router.push("/");
     }
   };
   return (

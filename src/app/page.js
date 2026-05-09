@@ -6,6 +6,7 @@ import NavBar from "@/Components/Shared/Navbar";
 import Image from "next/image";
 import AllBooks from "./(main)/all-books/page";
 
+
 export default function Home() {
   return (
     <div>
@@ -14,6 +15,7 @@ export default function Home() {
       <ReactFastMarquee/>
       <AllBooks/>
       <PopularityPage/>
+     
       <Footer/>
     </div>
   );
